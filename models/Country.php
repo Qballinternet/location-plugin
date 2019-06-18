@@ -72,8 +72,11 @@ class Country extends Model
 
         $countriesById = [];
         foreach ($countries as $country) {
-            $countriesById[$country->id] = $country->name;
+            $countriesById[$country->id] = trim($country->name);
         }
+
+        // Sort again due translations
+        asort($countriesById);
 
         return self::$nameList = $countriesById;
     }
